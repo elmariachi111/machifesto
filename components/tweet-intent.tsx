@@ -3,6 +3,7 @@ import { Input } from "@nextui-org/input";
 import { Link } from "@nextui-org/link";
 import { useSession } from "next-auth/react";
 import { useFormState } from "react-dom";
+import { Button } from "@nextui-org/button";
 
 import SubmitButton from "./submit-button";
 import addRepost from "./actions/addRepost";
@@ -16,23 +17,28 @@ export default function TweetIntent() {
 
   const session = useSession();
 
-  if (!session) {
-    return <p>not signed in</p>;
+  if (session.status !== "authenticated") {
+    return null;
   }
 
   return (
     <div className="flex flex-col w-8/12  items-center ">
-      <Link
-        isExternal
-        className="flex items-center text-large py-4"
-        color="primary"
-        href={REPOST_TWEET_INTENT}
-        title="Repost this tweet"
-        onClick={() => addUserAction()}
-      >
-        Repost this as {session.data?.user?.name}
-      </Link>
-      <form
+      <div className="flex flex-col gap-2">
+        <Button
+          isExternal
+          as={Link}
+          color="primary"
+          href={REPOST_TWEET_INTENT}
+          radius="full"
+          size="lg"
+          title="Repost this tweet"
+          onClick={() => addUserAction()}
+        >
+          Repost <b>this</b> tweet
+        </Button>
+        <p className="text-sm">as {session.data?.user?.name}</p>
+      </div>
+      {/* <form
         action={repostAction}
         className="flex flex-wrap md:flex-nowrap gap-4 w-full items-center"
       >
@@ -44,11 +50,12 @@ export default function TweetIntent() {
           type="url"
         />
         <SubmitButton />
-      </form>
+      </form> 
 
       <div className="text-xs">
         action response: {userResponse ? userResponse.id : ""}
       </div>
+      */}
     </div>
   );
 }

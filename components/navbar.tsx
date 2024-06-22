@@ -11,6 +11,7 @@ import {
 import { link as linkStyles } from "@nextui-org/theme";
 import clsx from "clsx";
 import NextLink from "next/link";
+import Image from "next/image";
 
 import SignoutLink from "./signout-link";
 
@@ -22,8 +23,16 @@ export const Navbar = () => {
     <NextUINavbar maxWidth="xl" position="sticky">
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
         <NavbarBrand as="li" className="gap-3 max-w-fit">
-          <NextLink className="flex justify-start items-center gap-1" href="/">
-            🌵
+          <NextLink className="flex justify-start items-center gap-3" href="/">
+            <div className="rounded-full overflow-clip">
+              <Image
+                alt="Machi"
+                className="object-contain"
+                height={50}
+                src="/elm.png"
+                width={50}
+              />
+            </div>
             <p className="font-bold text-inherit">Machifesto</p>
           </NextLink>
         </NavbarBrand>

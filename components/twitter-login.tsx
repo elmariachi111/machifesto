@@ -9,9 +9,9 @@ async function TwitterLogin() {
 
   const session = await auth();
 
-  // if (status === "authenticated") {
-  //   return <p>Signed in as {session.user.email}</p>;
-  // }
+  if (session?.user) {
+    return null; //<p>Logged in as {session.user.name}</p>;
+  }
 
   return (
     <>
@@ -25,8 +25,6 @@ async function TwitterLogin() {
           <TwitterIcon size={20} /> Login with X/Twitter
         </Button>
       </form>
-
-      <p>Welcome {session?.user?.name}</p>
     </>
   );
 }
