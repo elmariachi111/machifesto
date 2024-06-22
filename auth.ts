@@ -15,7 +15,14 @@ declare module "next-auth" {
 }
 
 export const { auth, handlers, signIn, signOut } = NextAuth({
-  providers: [Twitter],
+  providers: [
+    Twitter({
+      clientId: process.env.AUTH_TWITTER_ID,
+      clientSecret: process.env.AUTH_TWITTER_SECRET,
+      //@ts-ignore
+      version: "2.0", // opt-in to Twitter OAuth 2.0
+    }),
+  ],
 
   callbacks: {
     async jwt({ token, account, profile }) {
