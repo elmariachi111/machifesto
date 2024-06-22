@@ -8,6 +8,7 @@ import {
   TableHeader,
   TableRow,
 } from "@nextui-org/table";
+import { User } from "@nextui-org/user";
 import useSWR, { Fetcher } from "swr";
 import { Camelize } from "camelize-ts";
 
@@ -35,7 +36,16 @@ export default function Signers() {
       <TableBody items={data || []}>
         {(item) => (
           <TableRow key={item.id}>
-            <TableCell>{item.userName}</TableCell>
+            <TableCell>
+              <User
+                avatarProps={{ radius: "lg", src: item.profilePictureUrl }}
+                description={item.twitterHandle}
+                name={item.userName}
+              >
+                {item.twitterHandle}
+              </User>
+            </TableCell>
+
             <TableCell>{item.createdAt}</TableCell>
           </TableRow>
         )}
