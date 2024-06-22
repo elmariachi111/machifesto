@@ -4,7 +4,7 @@ import { signIn } from "@/auth";
 import { TwitterIcon } from "@/components/icons";
 import { auth } from "@/auth";
 
-const TwitterLogin = async () => {
+async function TwitterLogin() {
   //const { data: session, status } = useSession();
 
   const session = await auth();
@@ -29,6 +29,6 @@ const TwitterLogin = async () => {
       <p>Welcome {session?.user?.name}</p>
     </>
   );
-};
+}
 
 export default TwitterLogin;
