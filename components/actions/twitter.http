@@ -1,5 +1,5 @@
-### token
-
+GET http://localhost:3000/api/signers
+###
 
 POST https://api.twitter.com/oauth2/token?grant_type=client_credentials
 Authorization: Basic 

@@ -1,4 +1,5 @@
 import { subtitle, title } from "@/components/primitives";
+import Signers from "@/components/signers";
 import TweetIntent from "@/components/tweet-intent";
 import TwitterLogin from "@/components/twitter-login";
 
@@ -17,6 +18,7 @@ export default function Home() {
 
       <TwitterLogin />
       <TweetIntent />
+      <Signers />
       {/* <div className="mt-8">
         <Snippet hideCopyButton hideSymbol variant="flat">
           <span>

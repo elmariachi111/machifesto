@@ -20,6 +20,7 @@
 		"@nextui-org/snippet": "2.0.38",
 		"@nextui-org/switch": "2.0.31",
 		"@nextui-org/system": "2.2.1",
+		"@nextui-org/table": "^2.0.36",
 		"@nextui-org/theme": "2.2.5",
 		"@react-aria/ssr": "3.9.4",
 		"@react-aria/visually-hidden": "3.8.12",
@@ -50,12 +51,14 @@
 		"postcss": "8.4.38",
 		"react": "18.3.1",
 		"react-dom": "18.3.1",
+		"swr": "^2.2.5",
 		"tailwind-variants": "0.1.20",
 		"tailwindcss": "3.4.3",
 		"typescript": "5.1.6"
 	},
 	"devDependencies": {
 		"@types/pg": "^8.11.6",
+		"camelize-ts": "^3.0.0",
 		"env-cmd": "^10.1.0",
 		"vite-node": "^1.6.0"
 	}
