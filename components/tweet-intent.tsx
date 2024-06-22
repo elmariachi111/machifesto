@@ -5,11 +5,15 @@ import { useSession } from "next-auth/react";
 import { useFormState } from "react-dom";
 
 import SubmitButton from "./submit-button";
+import addRepost from "./actions/addRepost";
 
-import addRetweet from "@/components/actions/addRetweet";
+import addUser from "@/components/actions/addUser";
+import { REPOST_TWEET_INTENT } from "@/config/constants";
 
 export default function TweetIntent() {
-  const [response, formAction] = useFormState(addRetweet, null);
+  const [, repostAction] = useFormState(addRepost, null);
+  const [userResponse, addUserAction] = useFormState(addUser, null);
+
   const session = useSession();
 
   if (!session) {
@@ -22,13 +26,14 @@ export default function TweetIntent() {
         isExternal
         className="flex items-center text-large py-4"
         color="primary"
-        href="https://twitter.com/intent/retweet?tweet_id=463440424141459456"
+        href={REPOST_TWEET_INTENT}
         title="Repost this tweet"
+        onClick={() => addUserAction()}
       >
         Repost this as {session.data?.user?.name}
       </Link>
       <form
-        action={formAction}
+        action={repostAction}
         className="flex flex-wrap md:flex-nowrap gap-4 w-full items-center"
       >
         <Input
@@ -40,7 +45,10 @@ export default function TweetIntent() {
         />
         <SubmitButton />
       </form>
-      <div className="text-xs">action response: {response}</div>
+
+      <div className="text-xs">
+        action response: {userResponse ? userResponse.id : ""}
+      </div>
     </div>
   );
 }

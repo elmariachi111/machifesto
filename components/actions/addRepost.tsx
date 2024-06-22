@@ -1,7 +1,7 @@
 "use server";
 import { revalidatePath } from "next/cache";
 
-export default async function addRetweet(
+export default async function addRepost(
   previousState: string | undefined | null,
   formData: FormData,
 ) {

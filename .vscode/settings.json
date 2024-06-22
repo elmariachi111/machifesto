@@ -1,3 +1,15 @@
 {
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5433,
+      "driver": "PostgreSQL",
+      "name": "bioacc",
+      "database": "bioacc",
+      "username": "bioacc",
+      "password": "bioacc"
+    }
+  ]
 }

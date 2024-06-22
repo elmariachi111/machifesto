@@ -1,0 +1,26 @@
+### token
+
+
+POST https://api.twitter.com/oauth2/token?grant_type=client_credentials
+Authorization: Basic 
+    
+
+### https://twitter.com/bio_xyz/status/1796199193461043490
+
+GET https://api.twitter.com/2/tweets/1796199193461043490
+Authorization: Bearer 
+
+###
+
+### balaji 1804094845251674486
+https://api.twitter.com/2/users/me?user.fields=most_recent_tweet_id,public_metrics,profile_image_url
+Authorization: Bearer 
+
+### 
+POST https://api.twitter.com/2/users/21187667/retweets
+Content-Type: application/json
+Authorization: Bearer 
+
+{
+  "tweet_id": "1804094845251674486",
+}
