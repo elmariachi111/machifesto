@@ -3,11 +3,12 @@ import { Metadata } from "next";
 import { subtitle, title } from "@/components/primitives";
 import Signers from "@/components/signers";
 import TweetIntent from "@/components/tweet-intent";
+import SignIntent from "@/components/sign-intent";
 import TwitterLogin from "@/components/twitter-login";
-
+import { siteConfig } from "@/config/site";
 export const metadata: Metadata = {
-  title: "Machifesto ::: Sign the Machifesto",
-  description: "This is a demo app",
+  title: siteConfig.name,
+  description: siteConfig.description,
 };
 
 export default function Home() {
@@ -22,8 +23,9 @@ export default function Home() {
 
       <TwitterLogin />
       <TweetIntent />
+      <SignIntent />
 
-      <div className="w-8/12 ">
+      <div className="md:w-8/12 ">
         <h2 className={subtitle({ className: "text-center" })}>
           Brave signers that signed already
         </h2>

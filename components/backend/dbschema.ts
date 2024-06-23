@@ -1,7 +1,9 @@
+import { SignedOffchainAttestation } from "@ethereum-attestation-service/eas-sdk";
 import {
   ColumnType,
   Generated,
   Insertable,
+  JSONColumnType,
   Selectable,
   Updateable,
 } from "kysely";
@@ -21,7 +23,7 @@ export interface SignerTable {
   repost_url: string | null;
 
   ethereum_address: string | null;
-  message_signature: string | null;
+  attestation: JSONColumnType<SignedOffchainAttestation> | null;
 
   created_at: ColumnType<Date, string | undefined, never>;
 }

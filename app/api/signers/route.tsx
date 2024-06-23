@@ -14,6 +14,8 @@ export async function GET() {
       "twitter_id",
       "twitter_handle",
       "created_at",
+      "ethereum_address",
+      "attestation",
     ])
     .orderBy("created_at", "desc")
     .execute();

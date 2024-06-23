@@ -11,8 +11,10 @@ import {
 import { User } from "@nextui-org/user";
 import useSWR, { Fetcher } from "swr";
 import { Camelize } from "camelize-ts";
+import { Button } from "@nextui-org/button";
 
 import { Signer } from "./backend/dbschema";
+import { SignatureIcon } from "./icons";
 
 export default function Signers() {
   const fetcher: Fetcher<
@@ -26,6 +28,7 @@ export default function Signers() {
       <TableHeader>
         <TableColumn>signer</TableColumn>
         <TableColumn>reposted at</TableColumn>
+        <TableColumn>signed</TableColumn>
       </TableHeader>
       {/* <TableBody>
         <TableRow>
@@ -47,6 +50,20 @@ export default function Signers() {
             </TableCell>
 
             <TableCell>{item.createdAt}</TableCell>
+            <TableCell>
+              {item.attestation ? (
+                <Button
+                  isIconOnly
+                  aria-label="Attestation"
+                  color="default"
+                  radius="full"
+                  variant="flat"
+                  onClick={() => console.log(item.attestation)}
+                >
+                  <SignatureIcon size={25} />
+                </Button>
+              ) : null}
+            </TableCell>
           </TableRow>
         )}
       </TableBody>
