@@ -1,7 +1,14 @@
+import { Metadata } from "next";
+
 import { subtitle, title } from "@/components/primitives";
 import Signers from "@/components/signers";
 import TweetIntent from "@/components/tweet-intent";
 import TwitterLogin from "@/components/twitter-login";
+
+export const metadata: Metadata = {
+  title: "Machifesto ::: Sign the Machifesto",
+  description: "This is a demo app",
+};
 
 export default function Home() {
   return (

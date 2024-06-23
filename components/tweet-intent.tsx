@@ -1,11 +1,9 @@
 "use client";
-import { Input } from "@nextui-org/input";
+import { Button } from "@nextui-org/button";
 import { Link } from "@nextui-org/link";
 import { useSession } from "next-auth/react";
 import { useFormState } from "react-dom";
-import { Button } from "@nextui-org/button";
 
-import SubmitButton from "./submit-button";
 import addRepost from "./actions/addRepost";
 
 import addUser from "@/components/actions/addUser";

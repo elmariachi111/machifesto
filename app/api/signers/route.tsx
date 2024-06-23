@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 
 import { db } from "@/components/backend/db";
 
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   const result = await db
     .selectFrom("signers")

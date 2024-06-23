@@ -7,7 +7,7 @@ declare module "next-auth" {
    */
   interface Session {
     user: {
-      id: string;
+      twitterId: string;
       accessToken: string;
       userName: string;
     } & DefaultSession["user"];
@@ -29,7 +29,9 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
       // Persist the OAuth access_token and or the user id to the token right after signin
       if (account) {
         token.accessToken = account.access_token;
-        token.userId = account.providerAccountId;
+        if (account.provider === "twitter") {
+          token.twitterId = account.providerAccountId;
+        }
       }
       if (profile) {
         //@ts-ignore
@@ -46,7 +48,7 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
           ...session.user,
           accessToken: token.accessToken as string,
           userName: token.userName as string,
-          id: token.userId as string,
+          twitterId: token.twitterId as string,
         },
       };
     },

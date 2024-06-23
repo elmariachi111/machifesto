@@ -17,7 +17,7 @@ export default async function addUser() {
     .values({
       user_name: session.user.name,
       profile_picture_url: session.user.image,
-      twitter_id: session.user.id,
+      twitter_id: session.user.twitterId,
       twitter_handle: session.user.userName,
     })
     .onConflict((oc) => oc.doNothing())
@@ -28,7 +28,7 @@ export default async function addUser() {
     result = await db
       .selectFrom("signers")
       .select(["id"])
-      .where("twitter_id", "=", session.user.id)
+      .where("twitter_id", "=", session.user.twitterId)
       .executeTakeFirstOrThrow();
   }
 
