@@ -4,6 +4,7 @@ import { Button } from "@nextui-org/button";
 import { ConnectKitButton } from "connectkit";
 import { mainnet, sepolia } from "viem/chains";
 import { useAccount, useChainId } from "wagmi";
+import { useSession } from "next-auth/react";
 
 import addAttestation from "./actions/addAttestation";
 import { useEthersSigner } from "./lib/ens-wagmi-utils";
@@ -31,6 +32,12 @@ export default function SignIntent() {
   const { address, isConnecting, isDisconnected } = useAccount();
   const chainId = useChainId();
   const signer = useEthersSigner();
+
+  const session = useSession();
+
+  if (session.status !== "authenticated") {
+    return null;
+  }
 
   const signWithWallet = async () => {
     if (

@@ -4,6 +4,7 @@ export const EASConfig = {
   [mainnet.id]: {
     Eas: "0xA1207F3BBa224E2c9c3c6D5aF63D0eb1582Ce587",
     schemaRegistry: "0xA7b39296258348C78294F95B872b282326A97BDF",
+    //TODO: this schema must be created on mainnet first!
     schemaId:
       "0xb10f39c07fd57a2f2946228747ec1652b2bceb3c8c479ba1702bd8d3f89ebc75",
   },

@@ -8,9 +8,9 @@ import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { ThemeProviderProps } from "next-themes/dist/types";
 import { useRouter } from "next/navigation";
 import * as React from "react";
-import { WagmiProvider, createConfig, http } from "wagmi";
-import { mainnet, sepolia } from "viem/chains";
+import { WagmiProvider, createConfig } from "wagmi";
 
+import { chainConfig } from "@/config/chain";
 import { siteConfig } from "@/config/site";
 export interface ProvidersProps {
   children: React.ReactNode;
@@ -19,19 +19,8 @@ export interface ProvidersProps {
 
 const wagmiConfig = createConfig(
   getDefaultConfig({
-    // Your dApps chains
-    chains: [mainnet, sepolia],
+    ...chainConfig,
     ssr: true,
-    transports: {
-      // RPC URL for each chain
-      [mainnet.id]: http(
-        `https://eth-mainnet.g.alchemy.com/v2/${process.env.NEXT_PUBLIC_ALCHEMY_ID}`,
-      ),
-      [sepolia.id]: http(
-        `https://eth-sepolia.g.alchemy.com/v2/${process.env.NEXT_PUBLIC_ALCHEMY_ID}`,
-      ),
-    },
-
     // Required API Keys
     walletConnectProjectId: process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID!,
 

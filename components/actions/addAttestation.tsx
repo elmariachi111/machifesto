@@ -1,7 +1,6 @@
 "use server";
-import { revalidatePath } from "next/cache";
-import { serialize } from "wagmi";
 import { SignedOffchainAttestation } from "@ethereum-attestation-service/eas-sdk";
+import { revalidatePath } from "next/cache";
 
 import { auth } from "@/auth";
 import { db } from "@/components/backend/db";
@@ -15,7 +14,9 @@ export default async function addAttestation(
     throw new Error("Invalid session");
   }
 
-  const _attestation = serialize(attestation);
+  const _attestation = JSON.stringify(attestation, (_, v) =>
+    typeof v === "bigint" ? v.toString() : v,
+  );
 
   let result = await db
     .updateTable("signers")

@@ -30,12 +30,7 @@ export default function Signers() {
         <TableColumn>reposted at</TableColumn>
         <TableColumn>signed</TableColumn>
       </TableHeader>
-      {/* <TableBody>
-        <TableRow>
-          <TableCell>Tony Reichert</TableCell>
-          <TableCell>Active</TableCell>
-        </TableRow>
-      </TableBody> */}
+
       <TableBody items={data || []}>
         {(item) => (
           <TableRow key={item.id}>
